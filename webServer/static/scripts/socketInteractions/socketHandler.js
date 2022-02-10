@@ -7,20 +7,4 @@ socket.on("newCenter", (data) => {
     let Long = parseFloat(data[1])
     let Lat = parseFloat(data[0])
     newMapCenter(Long, Lat)
-    setTimeout(function () {
-        addMarker(Long, Lat, 1)
-        console.log(markerArray[0].getId())
-    }, 2000)
-    setTimeout(function () {
-        addMarker(-0.5864,51.2411, 2)
-        console.log(markerArray[0].getId())
-
-        addLine(markerArray[0], markerArray[1])
-        setTimeout(function (){
-            changeLineColour("1-2", '#ea6d6d')
-        },2000)
-        setTimeout(function (){
-            removeLine("1-2")
-        },5000)
-    }, 5000)
 })

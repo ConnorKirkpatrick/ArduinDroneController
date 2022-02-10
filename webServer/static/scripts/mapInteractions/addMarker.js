@@ -7,11 +7,15 @@
  */
 function addMarker(Long, Lat, id){
     let marker = new ol.Feature({
-        geometry: new ol.geom.Point(
-            ol.proj.fromLonLat([Long, Lat])
+        geometry: new ol.geom.Circle(
+            ol.proj.fromLonLat([Long, Lat]),
+            3
         ),
     });
+
     marker.setId(id)
+    marker.setStyle(baseMarkerStyle)
     vectorSource.addFeature(marker)
     markerArray.push(marker)
+    markerArray.sort(function (a,b){return a.getId() - b.getId()})
 }
