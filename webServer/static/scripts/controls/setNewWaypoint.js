@@ -15,6 +15,9 @@ function setNewWaypoint(){
             alert("Ensure The ID Is A Valid Number (1-10)")
             return
         }
+        else if(id < 1 | id > 10){
+            alert("Ensure The ID Is A Valid Number (1-10)")
+        }
         else {
             //check the ID is not already in use
             for (let i = 0; i < markerArray.length; i++) {
