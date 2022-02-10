@@ -12,3 +12,11 @@ document.querySelector("body").addEventListener('click', (e) => {
         rightClickMenu.classList.remove('visible')
     }
 })
+let addWaypoint = document.getElementById("rcmAddWaypoint")
+addWaypoint.addEventListener("click", (evt) =>{
+    newWaypointRightClick(rightClickCoordinates)
+})
+let addHome = document.getElementById("rcmSetHome")
+addHome.addEventListener("click", (evt) =>{
+    newHomeRightClick(rightClickCoordinates)
+})

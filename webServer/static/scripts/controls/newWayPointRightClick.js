@@ -1,4 +1,4 @@
-function newWaypointRightClick(coords){
+function newWaypointRightClick(){
     //get earliest free id
     let possibleIds = [1,2,3,4,5,6,7,8,9,10]
     let usedIds = []

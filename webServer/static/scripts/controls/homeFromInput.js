@@ -7,10 +7,13 @@ function homeFromInput(){
         return
     }
     else{
+        if(home){
+            removeMarker(0)
+        }
         let Lat = coordinates[0]
         let Long = coordinates[1]
         addMarker(Long,Lat,0)
-        alterMarkerStyle(0,10,'#3b245d')
+        alterMarkerStyle(0,10,'#ff0000')
         document.getElementById("newHome").value = ""
         home = true
     }
