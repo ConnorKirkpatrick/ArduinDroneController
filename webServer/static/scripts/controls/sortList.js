@@ -30,7 +30,17 @@ function sortList() {
             switchcount ++;
         }
     }
-    if(markerArray.length > 1){
+    if(markerArray.length > 1 & !home){
+        let elements = document.getElementsByTagName("upButton")
+        for(i = 0; i<elements.length; i++){
+            elements[i].style.display = ''
+        }
+        elements = document.getElementsByTagName("downButton")
+        for(i = 0; i<elements.length; i++){
+            elements[i].style.display = ''
+        }
+    }
+    else if(markerArray.length > 2 & home){
         let elements = document.getElementsByTagName("upButton")
         for(i = 0; i<elements.length; i++){
             elements[i].style.display = ''
