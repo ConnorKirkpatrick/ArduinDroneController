@@ -30,9 +30,16 @@ p {
     background-color: orange;
 }
 .removeButton{
+    margin-bottom: 10px;
     border-style: hidden;
     font-weight: bolder;
-    background-color: red;
+    background-color: #ff0000;
+}
+.moveButton{
+    margin-left: 10px;
+    border-style: solid;
+    background-color: #71faf5;
+    font-size: 15px;
 }
 #map-container {
     margin: 0;

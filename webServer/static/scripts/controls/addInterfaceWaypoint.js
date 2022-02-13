@@ -22,9 +22,20 @@ function addInterfaceWaypoint(id, Long, Lat){
 
     let br = document.createElement("br")
 
+    let moveUp = document.createElement("upbutton")
+    moveUp.setAttribute("type","button")
+    moveUp.setAttribute("class", "moveButton")
+    moveUp.innerText = "Move Up"
+
+    let moveDown = document.createElement("downButton")
+    moveDown.setAttribute("type","button")
+    moveDown.setAttribute("class", "moveButton")
+    moveDown.innerText = "Move Down"
     newListItem.append(removeButton)
     newListItem.append(br)
-    newListItem.append(br)
+    newListItem.append(moveUp)
+    newListItem.append(moveDown)
+
     list.append(newListItem)
     sortList()
 }
