@@ -30,4 +30,24 @@ function sortList() {
             switchcount ++;
         }
     }
+    if(markerArray.length > 1){
+        let elements = document.getElementsByTagName("upButton")
+        for(i = 0; i<elements.length; i++){
+            elements[i].style.display = ''
+        }
+        elements = document.getElementsByTagName("downButton")
+        for(i = 0; i<elements.length; i++){
+            elements[i].style.display = ''
+        }
+    }
+    else{
+        let elements = document.getElementsByTagName("upButton")
+        for(i = 0; i<elements.length; i++){
+            elements[i].style.display = 'none'
+        }
+        elements = document.getElementsByTagName("downButton")
+        for(i = 0; i<elements.length; i++){
+            elements[i].style.display = 'none'
+        }
+    }
 }

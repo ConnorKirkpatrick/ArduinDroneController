@@ -35,11 +35,20 @@ p {
     font-weight: bolder;
     background-color: #ff0000;
 }
+.removeButton:hover{
+    background-color: #eeeeee;
+}
 .moveButton{
     margin-left: 10px;
     border-style: solid;
     background-color: #71faf5;
     font-size: 15px;
+}
+.moveButton:hover{
+    background-color: #eeeeee;
+}
+.moveButton:disabled{
+    visibility: hidden;
 }
 #map-container {
     margin: 0;

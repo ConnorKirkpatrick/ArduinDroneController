@@ -17,20 +17,31 @@ function addInterfaceWaypoint(id, Long, Lat){
     removeButton.onclick = function (){
         removeMarker(id)
         this.parentNode.parentNode.removeChild(this.parentNode)
+        sortList()
     }
     removeButton.innerText = "Remove"
 
     let br = document.createElement("br")
 
-    let moveUp = document.createElement("upbutton")
+    let moveUp = document.createElement("upButton")
     moveUp.setAttribute("type","button")
     moveUp.setAttribute("class", "moveButton")
+    moveUp.style.display = 'none'
     moveUp.innerText = "Move Up"
+    moveUp.onclick = function (){
+        console.log("clicked")
+    }
+
 
     let moveDown = document.createElement("downButton")
     moveDown.setAttribute("type","button")
     moveDown.setAttribute("class", "moveButton")
+    moveDown.style.display = 'none'
     moveDown.innerText = "Move Down"
+    moveDown.onclick = function (){
+        console.log("clicked")
+    }
+
     newListItem.append(removeButton)
     newListItem.append(br)
     newListItem.append(moveUp)
