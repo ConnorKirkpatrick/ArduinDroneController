@@ -1,5 +1,5 @@
 # ArduinDroneController
-Java application to work as a base control station for the arduino drone
+Node-JS application to work as a base control station for the arduino drone
 
 ## functions
   * Create A home waypoint
