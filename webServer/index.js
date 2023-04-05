@@ -4,12 +4,12 @@ const app = require("express")();
 const http = require("http").createServer(app);
 const io = require("socket.io")(http);
 const events = require("events");
-const SerialPort = require("serialport")
+/*const SerialPort = require("serialport")
 
 const serialStart = require("../functions/serialStart")
 const serialWrite = require("../functions/serialWrite")
 const serialRead = require("../functions/serialRead")
-
+*/
 const express = require("express")
 app.use("/static", express.static(path.join(__dirname, "./static/")));
 const pug = require("pug")
@@ -26,13 +26,14 @@ http.listen(PORT, () => {
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/static/webPages/mainPage/mainPage.html");
 });
-
+/*
 let port = serialStart('COM15')
 serialRead(port)
 
 port.on("open", () => {
     serialWrite(port, "This is a test")
 })
+*/
 io.on("connect", socket =>{
     console.log("Connection made")
 })
@@ -41,6 +42,14 @@ io.on("connect", socket =>{
 
 name is '/dev/ttyS* where * is the com number -1
  */
+
+/*TODO:
+    Add GUI object to show if home is set
+    Add option to center map on drone position or not
+        upon first GPS connection, center the map on that coord
+    Implement serial communication
+    when hiding the map controls, do not stretch the graph, instead expand its size
+*/
 /*
 functionality:
     user adds points along with their order into the interface -> points will be created on the map
