@@ -53,11 +53,12 @@ name is '/dev/ttyS* where * is the com number -1
     Implement serial communication
     when hiding the map controls, do not stretch the graph, instead expand its size
     Fix CSS and general page layout
-        make waypoint input thinner and permenent
+        make waypoint input thinner and permanent
         make the status options display at the bottom as a row of sorts
     Add data identifier:
-        0 - status message from the reciever unit
-        1 - data message from the drone
+        0 - status message from the receiver unit
+        1 - initial data from the drone, this runs up until all configuration data is complete
+        2 - flight data from the drone
         also allow for the app to send data to the arduino that allows it to change the radio configuration (pairing, broadcast range+strength)
 */
 /*
