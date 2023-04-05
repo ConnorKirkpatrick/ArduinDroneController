@@ -1,4 +1,5 @@
 const SerialPort = require("serialport");
+const serialRead = require("./serialRead");
 
 function serialStart(portName){
     let port = new SerialPort.SerialPort({
@@ -14,6 +15,13 @@ function serialStart(portName){
             return console.log("Err: ", err.message);
         }
     }).setEncoding('utf8');
+
+    port.on("open", () => {
+        console.log("Serial port connected to: ",portName)
+        serialRead(port)
+        //serialWrite(port, "This is a test")
+    })
+
     return port
 }
 

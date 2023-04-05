@@ -6,11 +6,10 @@ const io = require("socket.io")(http);
 const events = require("events");
 
 const SerialPort = require("serialport")
-
-
 const serialStart = require("../functions/serialStart")
 const serialWrite = require("../functions/serialWrite")
 const serialRead = require("../functions/serialRead")
+const getPorts = require("../functions/getPorts")
 
 const express = require("express")
 app.use("/static", express.static(path.join(__dirname, "./static/")));
@@ -19,7 +18,6 @@ app.set("view engine","pug")
 app.set("views","./static/views")
 
 const fs = require("fs")
-
 let PORT = Number(process.env.PORT || 80);
 http.listen(PORT, () => {
     console.log("Listening on " + PORT);
@@ -29,22 +27,53 @@ app.get("/", (req, res) => {
     res.sendFile(__dirname + "/static/webPages/mainPage/mainPage.html");
 });
 
-let port = serialStart('COM9')
-
-port.on("open", () => {
-    console.log("Serial port connected")
-    serialRead(port)
-    //serialWrite(port, "This is a test")
-})
-
-io.on("connect", socket =>{
+io.on("connect", (socket) => {
     console.log("Connection made")
-})
-/*
-/dev/ttyS6
+    let activePorts;
+    let port;
+    //broadcast socket list
+    getPorts((data) => {
+        activePorts = data
+        socket.emit("ports",activePorts)
+        console.log(activePorts)
+        port = serialStart(activePorts[0])
+    })
 
-name is '/dev/ttyS* where * is the com number -1
- */
+
+    //change/setup port
+    socket.on("changePort",(newPort) =>{
+        if(port.isOpen){
+            port.close((err) =>{
+                    if(err){
+                        console.log("Err: ",err.message)
+                    }
+                    else{
+                        port = serialStart(newPort)
+                    }
+                }
+            )
+        }
+        else{
+            port = serialStart(newPort)
+        }
+
+    })
+    socket.on("disconnect", () => {
+        console.log("DISCONNECTED")
+        if(port.isOpen){
+            port.close((err) =>{
+                    if(err){
+                        console.log("Err: ",err.message)
+                    }
+                }
+            )
+        }
+    })
+})
+
+
+
+
 
 /*TODO:
     Add GUI object to show if home is set

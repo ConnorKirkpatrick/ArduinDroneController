@@ -8,3 +8,7 @@ socket.on("newCenter", (data) => {
     let Lat = parseFloat(data[0])
     newMapCenter(Long, Lat)
 })
+//serial port update action
+socket.on("ports", (data) => {
+    addPorts(socket, data)
+})
