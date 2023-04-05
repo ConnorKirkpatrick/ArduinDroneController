@@ -4,12 +4,14 @@ const app = require("express")();
 const http = require("http").createServer(app);
 const io = require("socket.io")(http);
 const events = require("events");
-/*const SerialPort = require("serialport")
+
+const SerialPort = require("serialport")
+
 
 const serialStart = require("../functions/serialStart")
 const serialWrite = require("../functions/serialWrite")
 const serialRead = require("../functions/serialRead")
-*/
+
 const express = require("express")
 app.use("/static", express.static(path.join(__dirname, "./static/")));
 const pug = require("pug")
@@ -26,14 +28,15 @@ http.listen(PORT, () => {
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/static/webPages/mainPage/mainPage.html");
 });
-/*
-let port = serialStart('COM15')
-serialRead(port)
+
+let port = serialStart('COM9')
 
 port.on("open", () => {
-    serialWrite(port, "This is a test")
+    console.log("Serial port connected")
+    serialRead(port)
+    //serialWrite(port, "This is a test")
 })
-*/
+
 io.on("connect", socket =>{
     console.log("Connection made")
 })
@@ -49,6 +52,13 @@ name is '/dev/ttyS* where * is the com number -1
         upon first GPS connection, center the map on that coord
     Implement serial communication
     when hiding the map controls, do not stretch the graph, instead expand its size
+    Fix CSS and general page layout
+        make waypoint input thinner and permenent
+        make the status options display at the bottom as a row of sorts
+    Add data identifier:
+        0 - status message from the reciever unit
+        1 - data message from the drone
+        also allow for the app to send data to the arduino that allows it to change the radio configuration (pairing, broadcast range+strength)
 */
 /*
 functionality:
